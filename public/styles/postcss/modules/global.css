@@ -1,0 +1,11 @@
+a {
+  text-decoration: none;
+}
+
+$white: #C9CBD6;
+$base: #333439;
+$black: #04050A;
+$navy: #161C3D;
+
+$roboto-font: 'Roboto', sans-serif;
+$lato-font: 'Lato', sans-serif;

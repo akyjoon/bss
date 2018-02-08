@@ -1,0 +1,30 @@
+.dashboard {
+  font-family: $roboto-font;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+  "menu content";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 1fr;
+  &__menu {
+    grid-area: menu;
+    background-color: $base;
+    display: grid;
+    grid-row-start: 1;
+    grid-row-end: -1;
+    height: 100vh;
+    grid-template-rows: repeat(6, 75px) 1fr;
+    align-item: center;
+    justify-item: center;
+    &>a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: $white;
+      text-align: center;
+      justify-self: center;
+      line-height: 75px;
+      border-bottom: 2px solid #2E3334;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.overview {
+    grid-area: content;
+    grid-column-start: 2;
+    grid-column-end: -1;
+    display: grid;
+    grid-gap: 15px;
+    grid-template-areas:
+    "content1 content2 content3 content3"
+    "content4 content4 content5 content5";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: minmax(200px, 500px);
+
+    &__it1 > #dcit1 {
+      height: 100% !important;
+    }
+    &__it2 > #dcit2 {
+      height: 100% !important;
+    }
+    &__it3 {
+      grid-column: span 2;
+      & > #dcit3 {
+        height: 100% !important;
+      }
+    }
+  }

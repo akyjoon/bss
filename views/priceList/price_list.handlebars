@@ -1,0 +1,81 @@
+<div class="container">
+  <form action="/priceList" method="POST">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="serviceName">Service Name</label>
+        <input class="form-control" type="text" name="serviceName">
+      </div>
+      <div class="col-md-12">
+      <input type="button" class="addButton btn btn-primary" value="Add Param">
+      </div>
+      <div class="addParamFields row"></div>
+
+      <div class="form-group col-md-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="applySlaTop">
+          <label class="form-check-label" for="applySlaTop">SLA Top</label>
+          <label for="slaTopFee">Sla Top Add Fee</label>
+          <input type="text" class="form-control" name="slaTopFee">
+        </div>
+      </div>
+      {{!-- Small Discount --}}
+      <div class="form-group  col-md-4">
+        <label for="smallMin">Discount Small Min</label>
+        <input class="form-control" type="text" name="smallMin">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="smallMax">Discount Small Max</label>
+        <input class="form-control" type="text" name="smallMax">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="smallPercentage">Discount Small %</label>
+        <input class="form-control" type="text" name="smallPercentage"> {{!-- mid Discount --}}
+      </div>
+      <div class="form-group col-md-4">
+        <label for="smallMin">Discount mid Min</label>
+        <input class="form-control" type="text" name="midMin">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="smallMax">Discount mid Max</label>
+        <input class="form-control" type="text" name="midMax">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="midPercentage">Discount mid %</label>
+        <input class="form-control" type="text" name="midPercentage"> {{!-- big Discount --}}
+      </div>
+      <div class="form-group col-md-4">
+        <label for="bigMin">Discount Big Min</label>
+        <input class="form-control" type="text" name="bigMin">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="bigMax">Discount big Max</label>
+        <input class="form-control" type="text" name="bigMax">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="bigPercentage">Discount big Percentage</label>
+        <input class="form-control" type="text" name="bigPercentage"> {{!-- large Discount --}}
+      </div>
+      <div class="form-group col-md-4">
+        <label for="largeMin">Discount large Min</label>
+        <input class="form-control" type="text" name="largeMin">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="largeMax">Discount large Max</label>
+        <input class="form-control" type="text" name="largeMax">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="largePercentage">Discount large Percentage</label>
+        <input class="form-control" type="text" name="largePercentage">
+      </div>
+
+      <input type="submit" value="save" class="btn btn-primary">
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-12">
+      {{#each priceList}}
+      <a href=="">{{serviceName}}</a>
+      {{/each}}
+    </div>
+  </div>
+</div>

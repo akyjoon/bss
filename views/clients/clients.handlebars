@@ -1,0 +1,19 @@
+<div class="clients">
+
+  <div class="clients__it1">
+    <p>
+      <span>{{clients.length}}</span> clients</p>
+  </div>
+  <div class="clients__it2">
+    <h4>New Client</h4>
+    <p>
+      <span>{{recentClient.[0].name}}</span>
+      {{recentClient.[0].frameAgreement.number}}
+    </p>
+  </div>
+  <div class="clients__it3">
+    {{#each clients}}
+    <a href="/clients/show/{{id}}">{{name}}</a>
+    {{/each}}
+  </div>
+</div>

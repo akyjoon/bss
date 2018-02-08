@@ -1,0 +1,53 @@
+<div class="individual-client">
+  <div class="individual-client__name">
+    {{client.name}}
+  </div>
+  <div class="individual-client__edit">
+    <form action="/clients/show/{{client.id}}" method="post">
+    <div class="form-group">
+      <label for="detailAgreement">Detail Agreement</label>
+      <input class="form-control" type="text" name="detailAgreement">
+      </div>
+      <div class="form-group">
+      <label for="time">Time</label>
+      <input class="form-control" type="text" name="time">
+      </div>
+      <div class="form-group">
+      <label for="date">Date</label>
+      <input class="form-control" type="text" name="date">
+      </div>
+      <div class="form-group">
+      <label for="serviceName">serviceName</label>
+      <select class="form-control" name="serviceName">
+        {{#each priceList}}
+        <option>{{serviceName}}</option>
+        {{/each}}
+      </select>
+      </div>
+      <div class="form-group">
+      <label for="serviceParameter">serviceParameter</label>
+      <input class="form-control" type="text" name="serviceParameter">
+      </div>
+      <div class="form-group">
+      <label for="serviceLength">serviceLength</label>
+      <input class="form-control" type="text" name="serviceLength">
+      </div>
+      <div class="form-group">
+      <label for="slaTop">slaTop</label>
+      <input class="form-control" type="text" name="slaTop">
+      </div>
+
+      <input type="submit" value="save">
+    </form>
+  </div>
+  <div class="individual-client__da">
+    {{#each client.detailAgreements}}
+    <a href="/da/{{id}}">{{number}}</a>
+    {{/each}}
+  </div>
+  <div class="individual-client__service">
+    {{#each client.services}}
+    <a href="/services/{{id}}">{{name}}</a>
+    {{/each}}
+  </div>
+</div>
