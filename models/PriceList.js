@@ -8,15 +8,18 @@ const PriceListSchema = new Schema({
     param: String,
     monthlyFee: Number,
     oneTimeFee: Number,
-    slaTop: {
-      apply: String,
-      addFee: Number
-    },
   }],
+  slaTop: {
+    apply: String,
+    addFee: Number
+  },
   discounts: {
     localDiscount: {
-      nga: Number,
-      small:{
+      nga: {
+        apply: String,
+        discount: Number
+      },
+      small: {
         min: Number,
         max: Number,
         percentage: Number

@@ -9,8 +9,24 @@
       <input type="button" class="addButton btn btn-primary" value="Add Param">
       </div>
       <div class="addParamFields row"></div>
+      <div class="form-group col-md-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="applySlaTop">
+          <label class="form-check-label" for="applySlaTop">SLA Top</label>
+          <label for="slaTopFee">Sla Top Add Fee</label>
+          <input type="text" class="form-control" name="slaTopFee">
+        </div>
+      </div>
 
-      
+      {{!-- NGA Discount --}}
+      <div class="form-group col-md-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="ngaDiscount">
+          <label class="form-check-label" for="ngaDiscount">NGA Discount</label>
+          <label for="ngaPercentage">NGA Discount %</label>
+          <input type="text" class="form-control" name="ngaPercentage">
+        </div>
+      </div>
       {{!-- Small Discount --}}
       <div class="form-group  col-md-4">
         <label for="smallMin">Discount Small Min</label>
@@ -69,9 +85,19 @@
       {{#each priceList}}
       <a href=="">{{serviceName}}</a>
       {{/each}}
-    </div>
+
+      <ul>
+      {{#each locations}}
+      <li>{{powiat}} {{gmina}} {{city}}: {{population}}</li>
+      {{/each}}
+      </ul>
+      </div>
   </div>
 </div>
+
+
+
+
 {{!-- Scripts start here --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
   <script src="/js/dist/script2.js"></script>

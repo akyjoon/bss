@@ -18,14 +18,6 @@ class AddParams {
       <label for="oneTimeFee">One time fee</label>
       <input class="form-control" type="text" name="oneTimeFee">
       </div>
-      <div class="form-group col-md-12">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" name="applySlaTop">
-          <label class="form-check-label" for="applySlaTop">SLA Top</label>
-          <label for="slaTopFee">Sla Top Add Fee</label>
-          <input type="text" class="form-control" name="slaTopFee">
-        </div>
-      </div>
       `
     }
 

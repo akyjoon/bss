@@ -86,7 +86,7 @@
 	    this.field = document.querySelector('.addParamFields');
 	    this.addButton = document.querySelector('.addButton');
 	    this.template = function () {
-	      return '\n      <div class="col-md-4">\n      <label for="parameter">Parameter</label>\n      <input class="form-control" type="text" name="parameter">\n      </div>\n\n      <div class="col-md-4">\n      <label for="monthlyFee">Monthly Fee</label>\n      <input class="form-control" type="text" name="monthlyFee">\n      </div>\n      \n      <div class="col-md-4">\n      <label for="oneTimeFee">One time fee</label>\n      <input class="form-control" type="text" name="oneTimeFee">\n      </div>\n      <div class="form-group col-md-12">\n        <div class="form-check">\n          <input class="form-check-input" type="checkbox" name="applySlaTop">\n          <label class="form-check-label" for="applySlaTop">SLA Top</label>\n          <label for="slaTopFee">Sla Top Add Fee</label>\n          <input type="text" class="form-control" name="slaTopFee">\n        </div>\n      </div>\n      ';
+	      return '\n      <div class="col-md-4">\n      <label for="parameter">Parameter</label>\n      <input class="form-control" type="text" name="parameter">\n      </div>\n\n      <div class="col-md-4">\n      <label for="monthlyFee">Monthly Fee</label>\n      <input class="form-control" type="text" name="monthlyFee">\n      </div>\n      \n      <div class="col-md-4">\n      <label for="oneTimeFee">One time fee</label>\n      <input class="form-control" type="text" name="oneTimeFee">\n      </div>\n      ';
 	    };
 
 	    //initiate methods

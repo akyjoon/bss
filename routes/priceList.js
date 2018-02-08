@@ -11,15 +11,26 @@ require('../models/Service');
 const Service = mongoose.model('service');
 require('../models/PriceList');
 const PriceList = mongoose.model('priceList')
+require('../models/Locations');
+const Location = mongoose.model('location')
 
 
 //get pricelist page
 router.get('/', (req, res) => {
   PriceList.find({})
     .then(priceList => {
-      res.render('priceList/price_list', {
-        priceList: priceList
+      Location.find({
+        population: {$lt: 50}
       })
+        .limit(20)
+        .then(locations => {
+          res.render('priceList/price_list', {
+            priceList: priceList,
+            locations: locations
+          }
+        )
+        console.log()
+        })
     })
 })
 
@@ -29,6 +40,12 @@ router.post('/', (req, res) => {
     serviceName: req.body.serviceName,
     parameter: [],
     'slaTop.apply': req.body.applySlaTop,
+    'slaTop.addFee': req.body.SlaTopFee,
+
+    //nga
+    'discounts.localDiscount.nga.apply': req.body.ngaDiscount,
+    'discounts.localDiscount.nga.discount': req.body.ngaPercentage,
+
     //small
     'discounts.localDiscount.small.min': req.body.smallMin,
     'discounts.localDiscount.small.max': req.body.smallMax,

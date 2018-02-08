@@ -10,6 +10,8 @@ const app = express();
 //Load DB model
 require('./models/Client')
 const Client = mongoose.model('client');
+require('./models/Locations');
+const Location = mongoose.model('location')
 
 //static path
 app.use(express.static(path.join(__dirname, 'public')));
@@ -65,6 +67,12 @@ app.use('/da', da);
 
 const priceList = require('./routes/priceList');
 app.use('/priceList', priceList)
+
+
+// const allLocations = require('./locations')
+// Location.collection.insertMany(allLocations)
+
+
 
 //listen on port
 const port = 5000;
