@@ -9,6 +9,7 @@ const nested = require('postcss-nested');
 const cssImport = require('postcss-import');
 const webpack = require('gulp-webpack');
 const babel = require('gulp-babel')
+var named = require('vinyl-named');
 
 //Nodemon
 gulp.task('nodemon', function (cb) {
@@ -59,11 +60,9 @@ gulp.task('postcss', function() {
 
 // Webpack & Babel
 gulp.task('compilejs', function() {
-	return gulp.src('public/js/script.js')
+	return gulp.src(['public/js/script.js', 'public/js/script2.js'])
+		.pipe(named())
 		.pipe(webpack({
-			output: {
-				filename: 'main.js'
-			},
 			module: {
 				loaders: [
 					{

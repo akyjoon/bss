@@ -25,9 +25,9 @@ router.get('/', (req, res) => {
 
 //add pricelist
 router.post('/', (req, res) => {
-  console.log(req.body)
   const newPriceList = {
     serviceName: req.body.serviceName,
+    parameter: [],
     'slaTop.apply': req.body.applySlaTop,
     //small
     'discounts.localDiscount.small.min': req.body.smallMin,
@@ -47,10 +47,13 @@ router.post('/', (req, res) => {
     'discounts.localDiscount.large.percentage': req.body.largePercentage
   }
   //do sth about it!!
-  const params = {
-    param: req.body.parameter,
-    monthlyFee: req.body.monthlyFee,
-    oneTimeFee: req.body.oneTimeFee
+  for(var i = 0; i < req.body.parameter.length; i++) {
+    var params = {
+      param: req.body.parameter[i],
+      monthlyFee: req.body.monthlyFee[i],
+      oneTimeFee: req.body.oneTimeFee[i]
+    }
+    newPriceList.parameter.push(params)
   }
 
   new PriceList(newPriceList)
