@@ -49,7 +49,7 @@ class DashboardContIt3 {
 
   //declare methods
   fetcher() {
-    fetch('/json/clients')
+    fetch('https://localhost:7000/json/clients')
       .then(res => res.json())
       .then(data => {
         data.forEach(client => {
@@ -66,7 +66,7 @@ class DashboardContIt3 {
   }
 
 
- 
+
 }
 
 export default DashboardContIt3;

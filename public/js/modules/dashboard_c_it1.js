@@ -36,10 +36,10 @@ class DashboardContIt1 {
     this.fetcher();
 
   }
- 
+
   //declare methods
   fetcher() {
-    fetch('/json/clients')
+    fetch('https://localhost:7000/json/clients')
       .then(res => res.json())
       .then(data => {
         data.forEach(client => {
