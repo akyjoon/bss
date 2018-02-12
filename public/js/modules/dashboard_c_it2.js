@@ -36,7 +36,7 @@ class DashboardContIt2 {
     this.fetcher();
 
   }
-
+ 
   //declare methods
   fetcher() {
     fetch('/json/clients')

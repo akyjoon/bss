@@ -64,7 +64,7 @@ class ClientsRevenue {
       })
       .catch(err => console.log(err))
   }
-
+ 
 
 
 }
