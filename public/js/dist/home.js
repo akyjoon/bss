@@ -130,7 +130,7 @@
 	        value: function fetcher() {
 	            var _this = this;
 
-	            fetch('https://localhost:7000/json/clients').then(function (res) {
+	            fetch('/json/clients').then(function (res) {
 	                return res.json();
 	            }).then(function (data) {
 	                data.forEach(function (client) {
