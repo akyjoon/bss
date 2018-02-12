@@ -39,7 +39,7 @@ class DashboardContIt2 {
 
   //declare methods
   fetcher() {
-    fetch('http://localhost:7000/json/clients')
+    fetch('https://localhost:7000/json/clients')
       .then(res => res.json())
       .then(data => {
         data.forEach(client => {

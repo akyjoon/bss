@@ -118,7 +118,7 @@
 	        value: function fetcher() {
 	            var _this = this;
 
-	            fetch('http://localhost:7000/clients/json/totalDAValue').then(function (res) {
+	            fetch('https://localhost:7000/clients/json/totalDAValue').then(function (res) {
 	                return res.json();
 	            }).then(function (data) {
 	                data.forEach(function (client) {
