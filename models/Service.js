@@ -19,6 +19,10 @@ const ServiceSchema = new Schema({
   detailAgreement: {
     type: Schema.Types.ObjectId,
     ref: 'detail'
+  },
+  activated: {
+    activation: Boolean,
+    date: Date
   }
 });
 

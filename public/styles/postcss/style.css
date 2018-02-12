@@ -3,3 +3,4 @@
 @import './modules/dashboard';
 @import './modules/overview';
 @import './modules/clients';
+@import './modules/individual_client'

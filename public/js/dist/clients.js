@@ -44,72 +44,102 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(5);
+	module.exports = __webpack_require__(1);
 
 
 /***/ }),
-/* 1 */,
-/* 2 */,
-/* 3 */,
-/* 4 */,
-/* 5 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _priceList_addParam = __webpack_require__(6);
+	var _clients_c_revenue = __webpack_require__(2);
 
-	var _priceList_addParam2 = _interopRequireDefault(_priceList_addParam);
+	var _clients_c_revenue2 = _interopRequireDefault(_clients_c_revenue);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var addParams = new _priceList_addParam2.default();
+	var clientsRevenue = new _clients_c_revenue2.default();
 
 /***/ }),
-/* 6 */
+/* 2 */
 /***/ (function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var AddParams = function () {
-	  function AddParams() {
-	    _classCallCheck(this, AddParams);
+	var ClientsRevenue = function () {
+	    function ClientsRevenue() {
+	        _classCallCheck(this, ClientsRevenue);
 
-	    this.field = document.querySelector('.addParamFields');
-	    this.addButton = document.querySelector('.addButton');
-	    this.template = function () {
-	      return '\n      <div class="col-md-4">\n      <label for="parameter">Parameter</label>\n      <input class="form-control" type="text" name="parameter">\n      </div>\n\n      <div class="col-md-4">\n      <label for="monthlyFee">Monthly Fee</label>\n      <input class="form-control" type="text" name="monthlyFee">\n      </div>\n      \n      <div class="col-md-4">\n      <label for="oneTimeFee">One time fee</label>\n      <input class="form-control" type="text" name="oneTimeFee">\n      </div>\n      ';
-	    };
+	        this.clientData = [];
+	        this.ctx = document.getElementById("ccit1");
+	        this.ccit1 = new Chart(this.ctx, {
+	            responsive: true,
+	            maintanAspectRatio: false,
+	            type: 'bar',
+	            data: {
+	                labels: [],
+	                datasets: [{
+	                    label: '',
+	                    data: [],
+	                    backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)'],
+	                    borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)'],
+	                    borderWidth: 1
+	                }]
+	            },
+	            options: {
+	                scales: {
+	                    yAxes: [{
+	                        ticks: {
+	                            beginAtZero: true
+	                        }
+	                    }]
+	                }
+	            }
+	        });
 
-	    //initiate methods
-	    this.click();
-	  }
-
-	  //declare methods
-
-
-	  _createClass(AddParams, [{
-	    key: 'click',
-	    value: function click() {
-	      var _this = this;
-	      this.addButton.addEventListener('click', function () {
-	        _this.field.insertAdjacentHTML('beforeend', _this.template());
-	      });
+	        //initiate methods
+	        this.fetcher();
 	    }
-	  }]);
 
-	  return AddParams;
+	    //declare methods
+
+
+	    _createClass(ClientsRevenue, [{
+	        key: 'fetcher',
+	        value: function fetcher() {
+	            var _this = this;
+
+	            fetch('http://localhost:7000/clients/json/totalDAValue').then(function (res) {
+	                return res.json();
+	            }).then(function (data) {
+	                data.forEach(function (client) {
+	                    //change datas
+	                    _this.ccit1.data.labels.push(client.name);
+	                    _this.ccit1.data.datasets[0].data.push(client.revenue);
+	                    _this.ccit1.data.datasets[0].label = 'Clients Total DA Value';
+
+	                    //update datas
+	                    _this.ccit1.update();
+	                });
+	            }).catch(function (err) {
+	                return console.log(err);
+	            });
+	        }
+	    }]);
+
+	    return ClientsRevenue;
 	}();
 
-	exports.default = AddParams;
+	exports.default = ClientsRevenue;
 
 /***/ })
 /******/ ]);

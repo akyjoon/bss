@@ -1,0 +1,17 @@
+.individual-client {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(100px, 250px));
+  grid-gap: 15px;
+
+  &__it1 {
+    display: grid;
+    align-item: center;
+    justify-items: center;
+    box-shadow: $card-shadow;
+    &__content {
+      text-align: center;
+    }
+  }
+}

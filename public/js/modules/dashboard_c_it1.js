@@ -3,6 +3,8 @@ class DashboardContIt1 {
     this.clientData = [];
     this.ctx = document.getElementById("dcit1");
     this.dcit1 = new Chart(this.ctx, {
+      responsive: true,
+      maintanAspectRatio: false,
       type: 'radar',
       data: {
           labels: [],
@@ -37,7 +39,7 @@ class DashboardContIt1 {
 
   //declare methods
   fetcher() {
-    fetch('http://localhost:7000/json')
+    fetch('http://localhost:7000/json/clients')
       .then(res => res.json())
       .then(data => {
         data.forEach(client => {

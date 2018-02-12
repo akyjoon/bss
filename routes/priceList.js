@@ -63,7 +63,7 @@ router.post('/', (req, res) => {
     'discounts.localDiscount.large.max': req.body.largeMax,
     'discounts.localDiscount.large.percentage': req.body.largePercentage
   }
-  //do sth about it!!
+  //push each param to newPriceList.parameter
   for(var i = 0; i < req.body.parameter.length; i++) {
     var params = {
       param: req.body.parameter[i],

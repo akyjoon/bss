@@ -1,15 +1,15 @@
-class DashboardContIt3 {
+class ClientsRevenue {
   constructor() {
     this.clientData = [];
-    this.ctx = document.getElementById("dcit3");
-    this.dcit3 = new Chart(this.ctx, {
+    this.ctx = document.getElementById("ccit1");
+    this.ccit1 = new Chart(this.ctx, {
         responsive: true,
         maintanAspectRatio: false,
       type: 'bar',
       data: {
           labels: [],
           datasets: [{
-              label: '# of Votes',
+              label: '',
               data: [],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
@@ -49,17 +49,17 @@ class DashboardContIt3 {
 
   //declare methods
   fetcher() {
-    fetch('http://localhost:7000/json/clients')
+    fetch('http://localhost:7000/clients/json/totalDAValue')
       .then(res => res.json())
       .then(data => {
         data.forEach(client => {
             //change datas
-          this.dcit3.data.labels.push(client.name);
-          this.dcit3.data.datasets[0].data.push(client.name.length);
-          this.dcit3.data.datasets[0].label = 'Clients name length'
+          this.ccit1.data.labels.push(client.name);
+          this.ccit1.data.datasets[0].data.push(client.revenue);
+          this.ccit1.data.datasets[0].label = 'Clients Total DA Value'
 
           //update datas
-          this.dcit3.update();
+          this.ccit1.update();
         })
       })
       .catch(err => console.log(err))
@@ -69,4 +69,4 @@ class DashboardContIt3 {
 
 }
 
-export default DashboardContIt3;
+export default ClientsRevenue;

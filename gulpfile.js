@@ -60,7 +60,7 @@ gulp.task('postcss', function() {
 
 // Webpack & Babel
 gulp.task('compilejs', function() {
-	return gulp.src(['public/js/script.js', 'public/js/script2.js'])
+	return gulp.src(['public/js/home.js', 'public/js/priceList.js', 'public/js/clients.js'])
 		.pipe(named())
 		.pipe(webpack({
 			module: {

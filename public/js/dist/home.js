@@ -44,24 +44,26 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1);
+	module.exports = __webpack_require__(3);
 
 
 /***/ }),
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _dashboard_c_it = __webpack_require__(2);
+	var _dashboard_c_it = __webpack_require__(4);
 
 	var _dashboard_c_it2 = _interopRequireDefault(_dashboard_c_it);
 
-	var _dashboard_c_it3 = __webpack_require__(3);
+	var _dashboard_c_it3 = __webpack_require__(5);
 
 	var _dashboard_c_it4 = _interopRequireDefault(_dashboard_c_it3);
 
-	var _dashboard_c_it5 = __webpack_require__(4);
+	var _dashboard_c_it5 = __webpack_require__(6);
 
 	var _dashboard_c_it6 = _interopRequireDefault(_dashboard_c_it5);
 
@@ -72,7 +74,7 @@
 	var dashboardContIt3 = new _dashboard_c_it6.default();
 
 /***/ }),
-/* 2 */
+/* 4 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -92,6 +94,8 @@
 	        this.clientData = [];
 	        this.ctx = document.getElementById("dcit1");
 	        this.dcit1 = new Chart(this.ctx, {
+	            responsive: true,
+	            maintanAspectRatio: false,
 	            type: 'radar',
 	            data: {
 	                labels: [],
@@ -126,7 +130,7 @@
 	        value: function fetcher() {
 	            var _this = this;
 
-	            fetch('http://localhost:7000/json').then(function (res) {
+	            fetch('http://localhost:7000/json/clients').then(function (res) {
 	                return res.json();
 	            }).then(function (data) {
 	                data.forEach(function (client) {
@@ -150,7 +154,7 @@
 	exports.default = DashboardContIt1;
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -170,6 +174,8 @@
 	        this.clientData = [];
 	        this.ctx = document.getElementById("dcit2");
 	        this.dcit2 = new Chart(this.ctx, {
+	            responsive: true,
+	            maintanAspectRatio: false,
 	            type: 'line',
 	            data: {
 	                labels: [],
@@ -204,7 +210,7 @@
 	        value: function fetcher() {
 	            var _this = this;
 
-	            fetch('http://localhost:7000/json').then(function (res) {
+	            fetch('http://localhost:7000/json/clients').then(function (res) {
 	                return res.json();
 	            }).then(function (data) {
 	                data.forEach(function (client) {
@@ -228,7 +234,7 @@
 	exports.default = DashboardContIt2;
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -248,6 +254,8 @@
 	        this.clientData = [];
 	        this.ctx = document.getElementById("dcit3");
 	        this.dcit3 = new Chart(this.ctx, {
+	            responsive: true,
+	            maintanAspectRatio: false,
 	            type: 'bar',
 	            data: {
 	                labels: [],
@@ -282,7 +290,7 @@
 	        value: function fetcher() {
 	            var _this = this;
 
-	            fetch('http://localhost:7000/json').then(function (res) {
+	            fetch('http://localhost:7000/json/clients').then(function (res) {
 	                return res.json();
 	            }).then(function (data) {
 	                data.forEach(function (client) {

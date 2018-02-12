@@ -3,6 +3,8 @@ class DashboardContIt2 {
     this.clientData = [];
     this.ctx = document.getElementById("dcit2");
     this.dcit2 = new Chart(this.ctx, {
+        responsive: true,
+        maintanAspectRatio: false,
       type: 'line',
       data: {
           labels: [],
@@ -37,7 +39,7 @@ class DashboardContIt2 {
 
   //declare methods
   fetcher() {
-    fetch('http://localhost:7000/json')
+    fetch('http://localhost:7000/json/clients')
       .then(res => res.json())
       .then(data => {
         data.forEach(client => {

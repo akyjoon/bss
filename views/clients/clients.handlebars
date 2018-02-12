@@ -1,19 +1,35 @@
 <div class="clients">
-
   <div class="clients__it1">
-    <p>
-      <span>{{clients.length}}</span> clients</p>
+    <div class="clients__it1__content">
+      <h4>Total Number of Clients</h4>
+      <p>
+        <span>{{clients.length}}</span> clients</p>
+    </div>
   </div>
   <div class="clients__it2">
-    <h4>New Client</h4>
-    <p>
-      <span>{{recentClient.[0].name}}</span>
-      {{recentClient.[0].frameAgreement.number}}
-    </p>
+    <div class="clients__it2__content">
+      <h4>Recent Client</h4>
+      <p>
+        <span>{{recentClient.[0].name}}</span>
+        {{recentClient.[0].frameAgreement.number}}</p>
+    </div>
   </div>
   <div class="clients__it3">
-    {{#each clients}}
-    <a href="/clients/show/{{id}}">{{name}}</a>
-    {{/each}}
+    <div class="clients__it3__content">
+      <h4>Client list</h4>
+      <ol>
+        {{#each clients}}
+        <li><a href="/clients/show/{{id}}">{{name}}</a></li>
+        {{/each}}
+      </ol>
+    </div>
   </div>
+  <div class="clients__it4">
+    <div class="clients__it4__content">
+      <canvas id="ccit1"></canvas>
+    </div>
 </div>
+
+{{!-- Scripts start here --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script src="/js/dist/clients.js"></script>

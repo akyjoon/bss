@@ -15,13 +15,34 @@ const Service = mongoose.model('service');
 require('../models/PriceList');
 const PriceList = mongoose.model('priceList')
 
+require('../models/Locations');
+const Location = mongoose.model('location')
+//End DB Model loading
+
+router.get('/json/totalDAValue', (req, res) => {
+  Client.find({})
+    .populate('services')
+    .then(clients => {
+      //show total DA value for each client
+      clients.map(client => {
+        client.revenue = 0;
+        client.services.map(service => {
+          client.revenue += service.price
+        })
+        return client
+      })
+      res.json(clients)
+    })
+})
 
 //client page
 router.get('/', (req, res) => {
+  //Find All Clients
   Client.find({})
-    .populate('detail')
-    .populate('service')
+    .populate('detailAgreements')
+    .populate('services')
     .then(clients => {
+      //find Newest Client
       Client.find({})
         .sort({
           'frameAgreement.signDate': 'desc'
@@ -67,13 +88,12 @@ router.get('/show/:id', (req, res) => {
     .populate('services')
     .then(client => {
       PriceList.find({})
-      .then(priceList=> {
-        res.render('clients/show', {
-          client: client,
-          priceList: priceList
+        .then(priceList => {
+          res.render('clients/show', {
+            client: client,
+            priceList: priceList
+          })
         })
-      }
-      )
     })
 })
 
@@ -90,7 +110,7 @@ router.post('/show/:id', (req, res) => {
         time: req.body.time,
         date: req.body.date
       })
-
+      //push newDetail to Client model
       client.detailAgreements.unshift(newDetail);
 
       const newService = new Service({
@@ -99,30 +119,44 @@ router.post('/show/:id', (req, res) => {
         length: req.body.serviceLength,
         slaTop: req.body.slaTop,
         client: client._id,
-        detailAgreement: newDetail._id
+        detailAgreement: newDetail._id,
+        price: 0
       })
-      newDetail.services.unshift(newService);
+      //Find the price of the newService from PriceList Model
+      PriceList.findOne({
+        serviceName: req.body.serviceName,
+        'parameter.param': req.body.serviceParameter
+      }).then(priceList => {
+        const paramIndex = priceList.parameter.findIndex(parameter => parameter.param === req.body.serviceParameter);
+        newService.price = priceList.parameter[paramIndex].monthlyFee;
 
-      newDetail.save((err) => {
-        if (err) {
-          console.log(err)
-        }
-        newService.save((err) => {
+        //push newService to DetailAgreement model
+        newDetail.services.unshift(newService);
+        newDetail.save((err) => {
           if (err) {
             console.log(err)
           }
-          client.services.unshift(newService)
-          client.save()
-            .then(client => {
-              client.save()
-                .then(client => {
-                  res.redirect(`/clients/show/${client.id}`)
-                })
-            })
+          newService.save((err) => {
+            if (err) {
+              console.log(err)
+            }
+            //push newService to Clients.services
+            client.services.unshift(newService)
+            client.save()
+              .then(client => {
+                client.save()
+                  .then(client => {
+                    res.redirect(`/clients/show/${client.id}`)
+                  })
+              })
+
+          })
 
         })
-
       })
+
+
+
 
 
     })

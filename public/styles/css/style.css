@@ -457,20 +457,19 @@ a {
 .dashboard {
   font-family: 'Roboto', sans-serif;
   width: 100%;
+  padding-right: 0;
+  padding-left: 0;
   display: grid;
-  grid-template-areas:
-  "menu content";
+  grid-gap: 10px;
   grid-template-columns: 250px 1fr;
-  grid-template-rows: 1fr;
 }
 
 .dashboard__menu {
-    grid-area: menu;
     background-color: #333439;
     display: grid;
     grid-row-start: 1;
     grid-row-end: -1;
-    height: 100vh;
+    height: 100%;
     grid-template-rows: repeat(6, 75px) 1fr;
     align-item: center;
     justify-item: center;
@@ -479,6 +478,7 @@ a {
 .dashboard__menu>a {
       display: block;
       width: 100%;
+      min-height: 100vh;
       height: 100%;
       color: #C9CBD6;
       text-align: center;
@@ -488,72 +488,86 @@ a {
     }
 
 .overview {
-    grid-area: content;
-    grid-column-start: 2;
-    grid-column-end: -1;
-    display: grid;
-    grid-gap: 15px;
-    grid-template-areas:
-    "content1 content2 content3 content3"
-    "content4 content4 content5 content5";
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: minmax(200px, 500px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: minmax(100px, 250px);
+  grid-gap: 15px;
+}
+
+.overview__it1, .overview__it2, .overview__it3 {
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
-.overview__it1 > #dcit1 {
-      height: 100% !important;
-    }
-
-.overview__it2 > #dcit2 {
-      height: 100% !important;
-    }
-
-.overview__it3 {
-      grid-column: span 2;
-    }
-
-.overview__it3 > #dcit3 {
-        height: 100% !important;
-      }
-
 .clients {
-  width: 100%;
+  margin: 2rem;
   display: grid;
-  grid-template-areas:
-  "content1 content2 content3"
-  "content4 content5 content6";
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: minmax(100px, 200px);
-  grid-gap: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(100px, 250px));
+  grid-gap: 15px;
 }
 
 .clients__it1 {
-    grid-area: content1;
-    width: 100%;
-    height: 100%;
-    display: grid;
-  }
-
-.clients__it1 >p {
-      -ms-flex-item-align: center;
-          align-self: center;
-      justify-self: center;
-      font-size: 3rem;
-    }
-
-.clients__it2 {
-    grid-area: content2;
-    width: 100%;
-    height: 100%;
     display: grid;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
     justify-items: center;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
+.clients__it1__content {
+      text-align: center;
+    }
+
+.clients__it2 {
+    display: grid;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    justify-items: center;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+.clients__it2__content {
+      text-align: center;
+    }
+
 .clients__it3 {
-    grid-area: content3;
     display:grid;
     grid-auto-flow: row;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
+
+.clients__it3__content {
+      padding: 15px;
+    }
+
+.clients__it4 {
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  }
+
+.individual-client {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(100px, 250px));
+  grid-gap: 15px;
+}
+
+.individual-client__it1 {
+    display: grid;
+    align-item: center;
+    justify-items: center;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+.individual-client__it1__content {
+      text-align: center;
+    }

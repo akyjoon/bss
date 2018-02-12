@@ -16,16 +16,21 @@ const Location = mongoose.model('location')
 //static path
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+//Load Keys
+const keys = require('./config/keys')
 //Connect to Database
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://akyjoon:Qangelo1232@ds217138.mlab.com:17138/bss')
+mongoose.connect(keys.mongoURI)
 .then(() => console.log('mongodb connected'))
 .catch(err => console.log(err));
 
 //Middleware configurations
 //----Handlebars
+const {total} = require('./helpers/hbs');
 app.engine('handlebars', handlebars({
+  // helpers: {
+  //   total: total
+  // },
   defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
@@ -49,7 +54,9 @@ app.get('/', (req, res) => {
   })
 });
 
-app.get('/json', (req, res) => {
+
+//send client data and receive on front-end
+app.get('/json/clients', (req, res) => {
   Client.find({})
     .then(clients => {
       res.json(clients)
