@@ -4,6 +4,7 @@
   "description": "IDM Network Business Support System for KBTO Company",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Youngjoon Kim",
