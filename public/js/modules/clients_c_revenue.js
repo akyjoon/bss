@@ -49,7 +49,7 @@ class ClientsRevenue {
 
   //declare methods
   fetcher() {
-    fetch('https://localhost:7000/clients/json/totalDAValue')
+    fetch('/clients/json/totalDAValue')
       .then(res => res.json())
       .then(data => {
         data.forEach(client => {
